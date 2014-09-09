@@ -21,3 +21,13 @@ virt-install --name RHEL-6.3-LAMP \
        --accelerate \
        --vnc \
        -c /tmp/SLES11-x86_64-DVD.iso
+
+       
+ISO_PATH=/home/iigeo/vm/win7_lite.iso  #debian iso
+KVM_HOSTNAME=win7lic22 #name maquina
+KVM_RAM=3000 #ram virtual
+KVM_CPU=1 #(cantidad de CPU a usar)
+KVM_DISCO=20 #(disco duro en GB)
+KVM_PATH=/home/iigeo/vm/win7lic2.img ##PATH img win7
+virt-install --connect=qemu:///system --name=${KVM_HOSTNAME} --ram=${KVM_RAM} --vcpus=${KVM_CPU} --check-cpu --disk path=${KVM_PATH},size=${KVM_DISCO} --cdrom=${ISO_PATH} --vnc --noautoconsole \
+--os-type=Windows --os-variant=win7 --accelerate --network bridge=br0 --hvm
